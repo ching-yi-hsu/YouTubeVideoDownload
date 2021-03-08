@@ -1,5 +1,6 @@
 import tkinter as tk
 from pytubeyt import download_youtube_from_url
+from tkinter.filedialog import askdirectory
 import os
 
 def create_window():
@@ -20,11 +21,13 @@ def create_window():
     downlad_dest_label = tk.Label(window, text ="os path : ",padx=10)
     downlad_dest_label.grid(row=2, column=1)
     
-    path_set = os.path.expanduser("~") +"\download\\"
-    downlad_dest_stringvar = tk.StringVar()
-    downlad_dest_entry = tk.Entry(window , textvariable = downlad_dest_stringvar,bd = 5,width=40)
-    downlad_dest_stringvar.set(path_set)
-    downlad_dest_entry.grid(row=2,column=2,padx=5)
+    #path_set = os.path.expanduser("~") +"\download\\"
+    download_dest_stringvar = tk.StringVar()
+    download_dest_entry = tk.Entry(window , textvariable = download_dest_stringvar,bd = 5,width=40)
+    #download_dest_stringvar.set(path_set)
+    download_dest_entry.grid(row=2,column=2,padx=5)
+    download_dest_button = tk.Button(window, text= "Select path" , command = lambda:download_dest_stringvar.set(selectPath()) )
+    download_dest_button.grid(row=2,column=3, padx=5)
 
 
     quality_intvar =  tk.IntVar()
@@ -33,7 +36,7 @@ def create_window():
 
     video_720P_radio.grid(column=1, row=3)
     video_360P_radio.grid(column=2, row=3)
-    download_button = tk.Button(window, text= "download" , command = lambda: download_button_click(url_stringvar,downlad_dest_stringvar,quality_intvar))
+    download_button = tk.Button(window, text= "download" , command = lambda: download_button_click(url_stringvar,download_dest_stringvar,quality_intvar))
     download_button.grid(row=5,column=2, padx=5)
 
 
@@ -42,8 +45,12 @@ def create_window():
 
 def download_button_click(url_stringvar,os_stringvar,quality_intvar):
     download_youtube_from_url(url_stringvar.get(),os_stringvar.get(),quality_intvar)
-    #print(os_stringvar.get())
+    
+    #print(os_stringvar.get()
 
+def selectPath():
+    path = askdirectory()
+    return path
     
 
 
