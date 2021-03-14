@@ -1,7 +1,8 @@
 import tkinter as tk
 from pytubeyt import download_youtube_from_url
 from tkinter.filedialog import askdirectory
-import os
+from downloadprogressbar import Download_win
+
 
 def create_window():
     
@@ -44,9 +45,9 @@ def create_window():
 
 
 def download_button_click(url_stringvar,os_stringvar,quality_intvar):
-    download_youtube_from_url(url_stringvar.get(),os_stringvar.get(),quality_intvar)
-    
-    #print(os_stringvar.get()
+    #download_youtube_from_url(url_stringvar.get(),os_stringvar.get(),quality_intvar.get())
+    download_win = Download_win(url_stringvar.get(),os_stringvar.get(),quality_intvar.get())
+
 
 def selectPath():
     path = askdirectory()
