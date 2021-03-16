@@ -1,5 +1,4 @@
 import tkinter as tk
-from pytubeyt import download_youtube_from_url
 from tkinter.filedialog import askdirectory
 from downloadprogressbar import Download_win
 
