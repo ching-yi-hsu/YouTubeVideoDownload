@@ -31,11 +31,13 @@ def create_window():
 
 
     quality_intvar =  tk.IntVar()
-    video_720P_radio = tk.Radiobutton(window, text='MP4, 720P',variable=quality_intvar, value=0) 
-    video_360P_radio = tk.Radiobutton(window, text='MP4, 360P',variable=quality_intvar, value=1)
+    video_360P_radio = tk.Radiobutton(window, text='MP4, 360P',variable=quality_intvar, value=0) 
+    video_720P_radio = tk.Radiobutton(window, text='MP4, 720P',variable=quality_intvar, value=1)
+    video_1080P_radio = tk.Radiobutton(window, text='MP4, 1080P',variable=quality_intvar, value=2)
 
-    video_720P_radio.grid(column=1, row=3)
-    video_360P_radio.grid(column=2, row=3)
+    video_720P_radio.grid(column=2, row=3)
+    video_360P_radio.grid(column=1, row=3)
+    video_1080P_radio.grid(column=3, row=3)
     download_button = tk.Button(window, text= "download" , command = lambda: download_button_click(url_stringvar,download_dest_stringvar,quality_intvar))
     download_button.grid(row=5,column=2, padx=5)
 

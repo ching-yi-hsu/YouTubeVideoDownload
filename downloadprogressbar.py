@@ -16,11 +16,12 @@ class Download_win:
 
     def start_download(self):
         self.yt = YouTube(self.url, on_progress_callback= self.call_back_progress, on_complete_callback= self.download_finish)
-        if self.quality == 1:
+        if self.quality == 0:
             self.video =  self.yt.streams.filter(file_extension = 'mp4', res ='720p').first()
-        else :
+        elif self.quality == 1 :
             self.video =  self.yt.streams.filter(file_extension = 'mp4', res ='360p').first()
-
+        else:
+            self.video =  self.yt.streams.filter(file_extension = 'mp4', res ='1080p').first()
         download_fun = lambda: self.video.download(self.file_os)
         threading.Thread(target=download_fun).start()
 
